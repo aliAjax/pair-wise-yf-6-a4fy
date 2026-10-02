@@ -26,6 +26,11 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .shell {
   min-height: 100vh;
   padding: 24px;
@@ -53,10 +58,17 @@ h1 {
   margin: 0;
 }
 
+.hint {
+  color: #828a80;
+  font-size: 0.85rem;
+  margin: 10px 0 0;
+  max-width: 62ch;
+}
+
 .stats {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(3, minmax(110px, 1fr));
+  grid-template-columns: repeat(5, minmax(100px, 1fr));
 }
 
 .stat,
@@ -82,11 +94,92 @@ h1 {
   font-size: 1.65rem;
 }
 
+/* 设备与协作状态条 */
+.devicebar {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #dde1d9;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.86rem;
+  gap: 10px;
+  margin: 0 auto 18px;
+  max-width: 1240px;
+  padding: 10px 14px;
+}
+
+.devicebar select {
+  min-height: 34px;
+  width: auto;
+}
+
+.inline-label {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.pill {
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 6px 12px;
+}
+
+.pill.on {
+  background: #d8ead6;
+  color: #376336;
+}
+
+.pill.off {
+  background: #eadbd7;
+  color: #783d34;
+}
+
+.badge {
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 8px;
+}
+
+.badge.ok {
+  background: #d8ead6;
+  color: #376336;
+}
+
+.badge.warn {
+  background: #f4deb4;
+  color: #694c21;
+}
+
+.badge.err {
+  background: #f2c5b2;
+  color: #813d2a;
+}
+
+.badge.info {
+  background: #dde8f2;
+  color: #315674;
+}
+
 .layout {
   display: grid;
   gap: 18px;
   grid-template-columns: 340px 1fr;
   margin: 0 auto;
+  max-width: 1240px;
+}
+
+.bottom {
+  display: grid;
+  gap: 18px;
+  margin: 18px auto 0;
   max-width: 1240px;
 }
 
@@ -177,6 +270,10 @@ textarea {
   overflow: hidden;
 }
 
+.repair.has-conflict {
+  border-color: #e0b4a0;
+}
+
 .photo {
   align-items: center;
   background: #e4e8df;
@@ -230,6 +327,11 @@ textarea {
   color: #596257;
 }
 
+.chip.strong {
+  background: #e4e8df;
+  color: #37413a;
+}
+
 .priority.high {
   background: #f2c5b2;
   color: #813d2a;
@@ -266,6 +368,144 @@ textarea {
   gap: 8px;
 }
 
+.actions select {
+  width: auto;
+}
+
+/* 卡片内的分区：报价审批 / 付款 / 进度 */
+.block {
+  border-top: 1px dashed #dde1d9;
+  display: grid;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.block h4 {
+  color: #5c655b;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.mini {
+  color: #828a80;
+  font-size: 0.78rem;
+}
+
+.pend {
+  color: #b96f45;
+}
+
+.warn-text {
+  background: #f4deb4;
+  border-radius: 6px;
+  color: #694c21;
+  font-size: 0.82rem;
+  margin: 0;
+  padding: 8px 10px;
+}
+
+.payrow {
+  align-items: center;
+  background: #f6f7f4;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 10px;
+}
+
+.payrow.failed {
+  background: #f9ece6;
+}
+
+.progress-list {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.progress-list li {
+  background: #f6f7f4;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.inline-form {
+  background: #f2f4ef;
+  border: 1px dashed #cfd6cc;
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+
+.grid2 {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* 冲突裁定 */
+.conflict-panel {
+  border-color: #e0b4a0;
+  margin-bottom: 14px;
+}
+
+.conflict {
+  border-top: 1px dashed #e0c4b6;
+  display: grid;
+  gap: 10px;
+  padding: 12px 0;
+}
+
+.conflict:first-of-type {
+  border-top: 0;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid #e6eae3;
+  font-size: 0.85rem;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  color: #687166;
+  font-size: 0.78rem;
+}
+
+.table tfoot td {
+  font-weight: 800;
+}
+
+/* 同步日志 */
+.synclog {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.synclog li {
+  align-items: center;
+  background: #f6f7f4;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 10px;
+}
+
 .empty {
   align-items: center;
   color: #828a80;
@@ -280,6 +520,10 @@ textarea {
   .layout {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -298,5 +542,9 @@ textarea {
 
   .content {
     padding: 14px;
+  }
+
+  .grid2 {
+    grid-template-columns: 1fr;
   }
 }
